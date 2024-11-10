@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Employee Management</h2>
+
+<div class="dashboard-actions">
+    <a href="{% url 'add_employee' %}" class="btn btn-success mb-4">Add New Employee</a>
+    <a href="{% url 'employee_overview' %}" class="btn btn-info mb-4">View Employees</a>
+</div>
+
+<style>
+    .project-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .project-block {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+    }
+    .project-block:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .project-name-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .project-name {
+        text-align: center;
+    }
+    .view-employees {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}

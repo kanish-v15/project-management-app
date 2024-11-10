@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Month Resource Allocation Overview</h2>
+
+<form method="get" class="form-inline mb-4">
+    <div class="form-group">
+        <label for="year" class="mr-2">Year:</label>
+        <select name="year" id="year" class="form-control mr-4">
+            <option value="">Select Year</option>
+            {% for yr in available_years %}
+                <option value="{{ yr }}" {% if selected_year == yr %}selected{% endif %}>{{ yr }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="month" class="mr-2">Month:</label>
+        <select name="month" id="month" class="form-control mr-4">
+            <option value="">Select Month</option>
+            {% for mnth in available_months %}
+                <option value="{{ mnth }}" {% if selected_month == mnth %}selected{% endif %}>{{ mnth }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary">View Allocation</button>
+    </div>
+</form>
+
+{% if month_resource_summary %}
+    <h3>Resource Allocation Summary for {{ selected_month }} {{ selected_year }}</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Budgeted Resources (Sum)</th>
+                <th>Actual Resources (Sum)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ month_resource_summary.budgeted_resources_sum|floatformat:2 }}</td>
+                <td>{{ month_resource_summary.actual_resources_sum|floatformat:2  }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endif %}
+
+<a href="{% url 'resource_allocation_overview' %}" class="btn btn-secondary mt-4">Back to Resource Allocation Overview</a>
+
+{% endblock %}

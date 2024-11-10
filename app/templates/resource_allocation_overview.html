@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h2>Resource Allocation Overview</h2>
+    <a href="{% url 'month_resource_allocation_overview' %}" class="btn btn-info">Month Resource Allocation</a>
+</div>
+
+<form method="get" class="form-inline mb-4 mt-4">
+    <div class="form-group">
+        <label for="year" class="mr-2">Year:</label>
+        <select name="year" id="year" class="form-control mr-4">
+            <option value="">All Years</option>
+            {% for yr in available_years %}
+                <option value="{{ yr }}" {% if selected_year == yr %}selected{% endif %}>{{ yr }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="month" class="mr-2">Month:</label>
+        <select name="month" id="month" class="form-control mr-4">
+            <option value="">All Months</option>
+            {% for mnth in available_months %}
+                <option value="{{ mnth }}" {% if selected_month == mnth %}selected{% endif %}>{{ mnth }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- New Project Filter -->
+        <label for="project" class="mr-2">Project:</label>
+        <select name="project" id="project" class="form-control mr-4">
+            <option value="">All Projects</option>
+            {% for project in available_projects %}
+                <option value="{{ project.id }}" {% if selected_project == project.id %}selected{% endif %}>{{ project.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Project Name</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Allocation Ratio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee, data in resource_allocations.items %}
+        <tr>
+            <td>{{ employee.username }}</td>
+            <td>
+                {% for project in data.projects %}
+                    <strong>{{ project.project }}</strong><br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for project in data.projects %}
+                    {{ project.month }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for project in data.projects %}
+                    {{ project.year }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for project in data.projects %}
+                    {{ project.allocation_ratio }}<br>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

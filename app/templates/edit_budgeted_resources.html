@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Budgeted Resources for {{ project.name }} - {{ period }}</h2>
+
+{% if error_message %}
+    <div class="alert alert-danger">{{ error_message }}</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="budgeted_resources">Budgeted Resources:</label>
+        <input type="number" step="0.01" name="budgeted_resources" id="budgeted_resources" 
+               class="form-control" required 
+               value="{% if budget %}{{ budget.budgeted_resources }}{% else %}0.00{% endif %}">
+    </div>
+    <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i> Save Changes</button>
+</form>
+
+<a href="{% url 'project_details' project.id %}?period={{ period }}" class="btn btn-secondary mt-4"><i class="fas fa-times"></i> Cancel</a>
+{% endblock %}

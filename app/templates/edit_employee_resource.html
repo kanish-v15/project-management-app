@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Employee Resource Allocation for {{ resource.employee.username }}</h2>
+
+<form id="edit-resource-form" method="post" onsubmit="return validateAllocation()">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="allocation_ratio">Allocation Ratio (0.10, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.70, 0.75, 0.80, 0.90, 1 or "intern"):</label>
+        <input type="text" name="allocation_ratio" id="allocation_ratio" value="{{ resource.allocation_ratio }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i> Save Changes</button>
+</form>
+
+
+<a href="{% url 'employee_overview' %}" class="btn btn-secondary mt-4">Back to Employee Overview</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    function validateAllocation() {
+        const allowedValues = ["0.10", "0.20", "0.25", "0.30", "0.40", "0.50", "0.60", "0.70", "0.75", "0.80", "0.90", "1", "intern"];
+        const allocationRatioInput = document.getElementById('allocation_ratio').value.trim().toLowerCase();
+
+        if (!allowedValues.includes(allocationRatioInput)) {
+            alert("Invalid allocation ratio. Please enter one of the following values: " + allowedValues.join(", "));
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</script>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+</style>
+
+{% endblock %}

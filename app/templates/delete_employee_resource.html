@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Delete Resource Allocation for {{ resource.employee.username }}</h2>
+
+<p>Are you sure you want to delete this resource allocation for {{ resource.employee.username }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete Resource</button>
+    <a href="{% url 'manage_resources' resource.project_budget.project.id %}?period={{ resource.project_budget.month }} {{ resource.project_budget.year }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
+
