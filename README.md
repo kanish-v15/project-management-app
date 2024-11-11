@@ -1,4 +1,4 @@
-# Project Management App
+ # Project Management App
 
 A simple yet effective Project Management Application developed using Django, Python, and MySQL. This app is designed to help users manage tasks, projects, and deadlines efficiently with user authentication and role-based access.
 
@@ -8,6 +8,8 @@ A simple yet effective Project Management Application developed using Django, Py
 - **Project and Task Management**: Create, update, and delete projects and tasks.
 - **Role-Based Access**: Different user roles (Project Manager, Team Lead, Employee) with specific permissions.
 - **Dashboard**: Summary of all active projects, tasks, and deadlines.
+- **Employee Management**: Add, edit or remove employee details.
+- **Resource Management**: Manage all the employee resources and their project allocation ratio at one place.
 
 ## Tech Stack
 
