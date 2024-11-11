@@ -6,15 +6,14 @@ A simple yet effective Project Management Application developed using Django, Py
 
 - **User Authentication**: Register, login, and logout features with secure password management.
 - **Project and Task Management**: Create, update, and delete projects and tasks.
-- **Role-Based Access**: Different user roles (Admin, Project Manager, Developer) with specific permissions.
+- **Role-Based Access**: Different user roles (Project Manager, Team Lead, Employee) with specific permissions.
 - **Dashboard**: Summary of all active projects, tasks, and deadlines.
-- **Notifications**: Reminders for upcoming deadlines.
 
 ## Tech Stack
 
 - **Backend**: Django (Python)
 - **Database**: MySQL
-- **Frontend**: HTML, CSS, JavaScript (if applicable)
+- **Frontend**: HTML, CSS, JavaScript
 - **Other**: Django ORM for database interactions, Django's built-in authentication
 
 ## Installation
