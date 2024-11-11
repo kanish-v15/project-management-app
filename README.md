@@ -1,4 +1,6 @@
  # Project Management App
+ 
+ ![Project Management App Screenshot](images/screenshot.png)
 
 A simple yet effective Project Management Application developed using Django, Python, and MySQL. This app is designed to help users manage tasks, projects, and deadlines efficiently with user authentication and role-based access.
 
